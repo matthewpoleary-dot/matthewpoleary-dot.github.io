@@ -1,6 +1,4 @@
-import About from "@/components/About";
 import Contact from "@/components/Contact";
-import Decisions from "@/components/Decisions";
 import Experience from "@/components/Experience";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -46,20 +44,8 @@ export default function Home() {
       <main id="main">
         <Hero cv={cv} photo={getPhoto()} />
 
-        <Section id="about" title="About">
-          <About />
-        </Section>
-
         <Section id="work" title="Work">
           <Projects />
-        </Section>
-
-        <Section
-          id="decisions"
-          title="Decisions"
-          intro="Calls I've made on my own projects, with the date and the reason, taken from each project's notes and commit history."
-        >
-          <Decisions />
         </Section>
 
         <Section id="experience" title="Experience">

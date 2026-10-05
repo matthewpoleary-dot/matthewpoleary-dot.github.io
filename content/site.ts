@@ -44,9 +44,8 @@ export const projects: Project[] = [
     name: "Tally",
     kind: "Personal project · 2026",
     oneLiner:
-      "A shift and pay tracker for part-time workers in Ireland. Enter the week's roster, confirm what you actually worked, and it tells you what the week is worth and whether your savings goal lands on time. I built it for my own part-time job.",
-    detail:
-      "It stores the actual finish time and break for every shift, because that's where part-time pay goes missing. Money is kept in whole cents so totals always add up, and the AI assistant can only quote figures the app has calculated.",
+      "A pay tracker for part-time workers in Ireland, built for my own job. Log the week's shifts and it tells you what they're worth and whether you'll hit your savings goal.",
+    detail: "Every figure its AI assistant quotes is calculated in code, not by the model.",
     stack: ["Next.js", "TypeScript", "Supabase", "Postgres", "Gemini API"],
     links: [
       { label: "Code", href: "https://github.com/matthewpoleary-dot/paytrackingapp" },
@@ -73,10 +72,9 @@ export const projects: Project[] = [
     id: "studywith",
     name: "StudyWith",
     kind: "Founder · 2025 – Present",
-    oneLiner:
-      "An AI tutoring platform for Leaving Cert students. The tutor asks questions instead of handing over answers, and students can turn their own notes into flashcards and quizzes.",
+    oneLiner: "An AI tutoring platform for Leaving Cert students. The tutor asks questions instead of giving answers.",
     detail:
-      "I built it end to end, including Stripe billing with a free tier, credit packs, a subscription and school plans. I also did the cold outreach to Irish grinds and tutoring providers, and got positive engagement from an established grinds company.",
+      "Built end to end with Stripe billing, then pitched to Irish grinds companies, with positive engagement from an established one.",
     stack: ["Next.js", "TypeScript", "Supabase", "Stripe", "Groq"],
     links: [{ label: "Code", href: "https://github.com/matthewpoleary-dot/Studywith" }],
     images: [
@@ -92,10 +90,8 @@ export const projects: Project[] = [
     id: "clients",
     name: "The Driving School Dublin",
     kind: "Client work through ML Webdesign · 2025 – Present",
-    oneLiner:
-      "Website and lesson-request system for an RSA-approved driving instructor in Dublin. Live since August 2025, and I still maintain it.",
-    detail:
-      "Available lesson slots are worked out from the instructor's weekly hours, lesson length, gaps between lessons and days off, so learners only see times he can actually do.",
+    oneLiner: "Booking website for an RSA-approved driving instructor in Dublin. Live since August 2025.",
+    detail: "Lesson slots are generated from his weekly hours, lesson length and days off.",
     stack: ["Next.js", "TypeScript", "Supabase", "Resend"],
     links: [
       { label: "Website", href: "https://thedrivingschooldublin.com" },
@@ -109,65 +105,6 @@ export const projects: Project[] = [
         h: 1600,
       },
     ],
-  },
-];
-
-export const decisions = [
-  {
-    date: "2026-09-23",
-    project: "Tally",
-    decision: "Only computed totals go to the AI. Never a merchant name or a transaction description.",
-    why: "Bank data is personal. The model only needs aggregates to be useful.",
-    tag: "Data",
-  },
-  {
-    date: "2026-09-21",
-    project: "Tally",
-    decision: "The AI proposes and the user confirms. It never writes silently.",
-    why: "Changes to pay or savings data should always be something the user has seen and agreed to.",
-    tag: "Product",
-  },
-  {
-    date: "2026-09-21",
-    project: "Tally",
-    decision: "No streaks.",
-    why: "A daily counter on a data-entry chore rewards made-up entries, which would destroy the log's value as evidence.",
-    tag: "Product",
-  },
-  {
-    date: "2026-09-20",
-    project: "Tally",
-    decision: "Every shift stores the rate it was worked at.",
-    why: "Otherwise a pay rise would quietly change what last month was worth.",
-    tag: "Engineering",
-  },
-  {
-    date: "2026-09-20",
-    project: "Tally",
-    decision: '"Not sure" is a real answer, stored as null. It is not the same as "no".',
-    why: "That difference is what lets the app later flag a possible Sunday entitlement. Collapse it to zero and the flag can never fire.",
-    tag: "Data",
-  },
-  {
-    date: "2026-08-10",
-    project: "StudyWith",
-    decision: "A failed AI action refunds the student's credit automatically.",
-    why: "Students shouldn't lose a credit for a request that failed on our side.",
-    tag: "Commercial",
-  },
-  {
-    date: "2026-08-10",
-    project: "StudyWith",
-    decision: "Rebuild access around entitlements, but keep the old column for rollback.",
-    why: "If the new access model had a problem, the old data was still there to fall back to.",
-    tag: "Engineering",
-  },
-  {
-    date: "2025-08-20",
-    project: "Driving School",
-    decision: "Launch contact-first. The booking flow waits.",
-    why: "It got the site live sooner. The booking pages were taken out of the first release and kept separate.",
-    tag: "Commercial",
   },
 ];
 
@@ -225,18 +162,5 @@ export const toolbox = [
   { k: "Services", v: "Stripe, Vercel, AWS, Resend, Gemini and Groq APIs" },
   { k: "Business", v: "Excel modelling, PowerPoint, data cleansing, equity research" },
   { k: "Languages", v: "English, French, Spanish, Irish" },
+  { k: "Outside work", v: "Marathon training, golf, padel, rugby" },
 ];
-
-export const about = {
-  paragraphs: [
-    "I'm in third year at Trinity College Dublin, majoring in Computer Science with a minor in Business. From January 2027 I'm on exchange at McGill University in Montreal.",
-    "I like building things that solve a problem I can see. Tally started because I wanted to check my pay from my part-time job against the hours I'd actually worked. StudyWith is bigger: a product, a pricing model, and pitching it to tutoring companies.",
-    "Next summer I want to work somewhere I can see how a business decides what to build, buy or change: consulting, product, data, fintech, or a technology team close to the commercial side.",
-  ],
-  now: [
-    { k: "Studying", v: "Year 3, Computer Science and Business, Trinity" },
-    { k: "Next", v: "McGill University, Montreal, from January 2027" },
-    { k: "Building", v: "Tally and StudyWith" },
-    { k: "Outside work", v: "Marathon training, golf, padel and rugby" },
-  ],
-};

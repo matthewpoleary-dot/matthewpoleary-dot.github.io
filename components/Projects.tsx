@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { projects, type Project } from "@/content/site";
 import { ArrowUpRight } from "./Icons";
-import PayLeakDemo from "./PayLeakDemo";
 
 export default function Projects() {
   return (
@@ -75,12 +74,6 @@ function ProjectRow({ p, flip }: { p: Project; flip: boolean }) {
           </ul>
         </div>
       </div>
-
-      {p.id === "tally" ? (
-        <div className="mt-10">
-          <PayLeakDemo />
-        </div>
-      ) : null}
     </article>
   );
 }

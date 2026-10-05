@@ -16,13 +16,12 @@ Deploy by importing the repo into Vercel. No environment variables are required.
 
 ## Editing content
 
-Every fact on the site lives in [`content/site.ts`](content/site.ts): hero copy, projects, experience, decisions, education and links. Components only lay that content out. The rule for that file is simple: nothing goes in that isn't true.
+Every fact on the site lives in [`content/site.ts`](content/site.ts): hero copy, stats, projects, experience, education and links. The hero photo is `public/matthew.jpg`; the favicon is cropped from it (`app/icon.png`, `app/apple-icon.png`). Components only lay that content out. The rule for that file is simple: nothing goes in that isn't true.
 
 ## Before launch
 
 1. **Add the CV.** In Word, File → Save as PDF, then put it at `public/Matthew-OLeary-CV.pdf`. Every CV button switches from "Request CV" (an email link) to "View CV" automatically on the next build.
-2. **Add a photo (optional).** Put a square photo at `public/matthew.jpg` and the hero shows it instead of the screenshot collage.
-3. **Set the domain.** Once it's bought, set `NEXT_PUBLIC_SITE_URL` (e.g. `https://example.com`) in Vercel so canonical URLs, Open Graph and the sitemap use it. Until then the Vercel production URL is used.
+2. **Set the domain.** Once it's bought, set `NEXT_PUBLIC_SITE_URL` (e.g. `https://example.com`) in Vercel so canonical URLs, Open Graph and the sitemap use it. Until then the Vercel production URL is used.
 
 ## How it's put together
 
@@ -30,5 +29,5 @@ Every fact on the site lives in [`content/site.ts`](content/site.ts): hero copy,
 - Dark by default, with a light theme toggle (remembered per visitor).
 - `public/work/`: project screenshots. Tally's come from the seeded test data in its own repo; the driving school and StudyWith shots are their public landing pages.
 - `app/`: layout and metadata, Open Graph image, robots, sitemap, favicon.
-- `components/`: one file per section. `Projects.tsx` holds the business/technical lens; `PayLeakDemo.tsx` is the interactive Tally demo.
+- `components/`: one file per section (header, hero, projects, experience, contact).
 - Respects `prefers-reduced-motion`. Checked with axe in both themes.
