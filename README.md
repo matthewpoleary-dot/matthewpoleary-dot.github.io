@@ -12,7 +12,16 @@ npm run lint
 npm run format
 ```
 
-Deploy by importing the repo into Vercel. No environment variables are required.
+## Deploying to GitHub Pages
+
+The site is a static export (`out/`), built and deployed by `.github/workflows/deploy.yml` on every push to `main`.
+
+1. Create a `main` branch from the current work and make it the default branch (Settings → General → Default branch).
+2. Rename the repo to `matthewpoleary-dot.github.io` (Settings → General → Repository name). It is then served at `https://matthewpoleary-dot.github.io`. If you keep the current name it is served at `https://matthewpoleary-dot.github.io/matthewsportfolio` instead; the workflow handles either.
+3. Settings → Pages → Build and deployment → Source: **GitHub Actions**.
+4. Push to `main` (or run the workflow from the Actions tab).
+
+It also still deploys on Vercel with no settings.
 
 ## Editing content
 

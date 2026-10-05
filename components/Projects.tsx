@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { asset } from "@/lib/site-url";
 import { projects, type Project } from "@/content/site";
 import { ArrowUpRight } from "./Icons";
 
@@ -24,7 +25,7 @@ function ProjectRow({ p, flip }: { p: Project; flip: boolean }) {
               {p.images.map((img, i) => (
                 <Image
                   key={img.src}
-                  src={img.src}
+                  src={asset(img.src)}
                   alt={img.alt}
                   width={img.w}
                   height={img.h}
@@ -39,7 +40,7 @@ function ProjectRow({ p, flip }: { p: Project; flip: boolean }) {
             p.images.map((img) => (
               <Image
                 key={img.src}
-                src={img.src}
+                src={asset(img.src)}
                 alt={img.alt}
                 width={img.w}
                 height={img.h}

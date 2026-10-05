@@ -1,6 +1,7 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { person } from "@/content/site";
+import { asset } from "@/lib/site-url";
 
 const inPublic = (file: string) => existsSync(join(process.cwd(), "public", file));
 
@@ -11,7 +12,7 @@ const inPublic = (file: string) => existsSync(join(process.cwd(), "public", file
 export function getCv() {
   const available = inPublic(person.cvFile);
   return available
-    ? { available, href: `/${person.cvFile}`, label: "View CV" }
+    ? { available, href: asset(`/${person.cvFile}`), label: "View CV" }
     : {
         available,
         href: `mailto:${person.email}?subject=${encodeURIComponent("CV request")}`,
@@ -21,7 +22,7 @@ export function getCv() {
 
 /** Drop a photo at /public/matthew.jpg and the hero uses it instead of the Tally screenshot. */
 export function getPhoto() {
-  return inPublic("matthew.jpg") ? "/matthew.jpg" : null;
+  return inPublic("matthew.jpg") ? asset("/matthew.jpg") : null;
 }
 
 export type Cv = ReturnType<typeof getCv>;

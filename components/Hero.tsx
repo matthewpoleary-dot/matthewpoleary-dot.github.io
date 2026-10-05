@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { asset } from "@/lib/site-url";
 import { hero, person, stats } from "@/content/site";
 import type { Cv } from "@/lib/cv";
 import LinkPills from "./LinkPills";
@@ -44,7 +45,7 @@ export default function Hero({ cv, photo }: { cv: Cv; photo: string | null }) {
             ) : (
               <figure className="relative pb-10 pr-6 sm:pr-10">
                 <Image
-                  src="/work/driving-school.jpg"
+                  src={asset("/work/driving-school.jpg")}
                   alt="The Driving School Dublin website, which I built and maintain for a client."
                   width={2560}
                   height={1600}
@@ -53,7 +54,7 @@ export default function Hero({ cv, photo }: { cv: Cv; photo: string | null }) {
                   className="w-full rounded-xl border border-rule"
                 />
                 <Image
-                  src="/work/tally-month.jpg"
+                  src={asset("/work/tally-month.jpg")}
                   alt="Tally, the pay tracker I built for my part-time job, with sample data."
                   width={1170}
                   height={2180}
