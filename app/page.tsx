@@ -46,11 +46,11 @@ export default function Home() {
       <main id="main">
         <Hero cv={cv} photo={getPhoto()} />
 
-        <Section
-          id="work"
-          title="Work"
-          intro="Three things I've built. Each one reads two ways: switch to the technical view for how it's built."
-        >
+        <Section id="about" title="About">
+          <About />
+        </Section>
+
+        <Section id="work" title="Work">
           <Projects />
         </Section>
 
@@ -64,10 +64,6 @@ export default function Home() {
 
         <Section id="experience" title="Experience">
           <Experience />
-        </Section>
-
-        <Section id="about" title="About">
-          <About />
         </Section>
 
         <Contact cv={cv} />

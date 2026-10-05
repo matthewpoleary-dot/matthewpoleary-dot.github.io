@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import type { Cv } from "@/lib/cv";
 
 const NAV = [
+  { href: "#about", id: "about", label: "About" },
   { href: "#work", id: "work", label: "Work" },
   { href: "#experience", id: "experience", label: "Experience" },
-  { href: "#about", id: "about", label: "About" },
   { href: "#contact", id: "contact", label: "Contact" },
 ];
 

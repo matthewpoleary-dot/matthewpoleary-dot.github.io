@@ -2,286 +2,116 @@
  * Every fact on the site lives in this file.
  *
  * The rule: nothing goes in here that isn't true. Each entry is traceable to
- * a public repo, the GitHub profile README, or something Matthew confirmed.
- * If you want to add something, add the evidence first.
+ * Matthew's CV, a public repo, or something he confirmed.
  */
 
 export const person = {
   name: "Matthew O'Leary",
-  shortName: "Matthew",
   email: "matthewpoleary@gmail.com",
   linkedin: "https://www.linkedin.com/in/matthew-o-leary-135436332",
   github: "https://github.com/matthewpoleary-dot",
-  githubHandle: "matthewpoleary-dot",
-  university: "Trinity College Dublin",
-  degree: "Computer Science (major) with Business (minor)",
-  year: "Third year, 2026–27",
-  result: "Currently achieving a 2:1",
-  location: "Dublin",
-  exchange: "Exchange semester at McGill University, Montreal, from January 2027",
-  seeking: "Summer 2027 internships across business and technology",
   /** Drop the PDF into /public with this name and every CV button goes live. */
   cvFile: "Matthew-OLeary-CV.pdf",
 };
 
 export const hero = {
-  headline: "I build software for a Dublin driving school, and for my own part‑time job.",
-  sub: "Computer Science and Business at Trinity College Dublin. Data analysis at Unio Wealth Management, equity research with the Trinity Student Managed Fund, and my own web design business on the side.",
+  headline: "I build software for a Dublin driving school, and for my own part\u2011time job.",
+  sub: "Business and Computer Science at Trinity College Dublin. Two summers as a data analysis intern at Unio Wealth Management, a year as a junior analyst in the Trinity Student Managed Fund, and founder of StudyWith.",
+  status: "Looking for a summer 2027 internship.",
 };
 
-/** Hero numbers. Small, but every one is checkable in a repo or on my transcript. */
 export const stats = [
+  { value: "2", label: "Summers as a data analysis intern at Unio Wealth Management" },
   { value: "3", label: "Products built end to end: Tally, StudyWith and a client's booking site" },
-  { value: "4", label: "Ways to pay in StudyWith: free, credit pack, subscription, schools" },
-  { value: "30", label: "Security tests on Tally that try to read another user's data" },
-  { value: "2:1", label: "Current grade in Computer Science and Business" },
-];
-
-export const toolbox = [
-  { k: "Code", v: "TypeScript, Java, SQL" },
-  { k: "Web", v: "React, Next.js, Tailwind CSS, Postgres, Supabase" },
-  { k: "Services", v: "Stripe, Vercel, AWS, Resend, Gemini and Groq APIs" },
-  { k: "Business", v: "Equity research, financial reporting, data cleansing, pricing design" },
+  { value: "589", label: "Leaving Certificate points" },
+  { value: "2:1", label: "Current grade at Trinity" },
 ];
 
 export type Project = {
   id: string;
-  index: string;
   name: string;
   kind: string;
-  period: string;
   oneLiner: string;
-  links: { label: string; href: string }[];
-  business: { k: string; v: string }[];
-  technical: { k: string; v: string }[];
+  detail: string;
   stack: string[];
-  learned: string;
+  links: { label: string; href: string }[];
   images: { src: string; alt: string; w: number; h: number; phone?: boolean }[];
 };
 
 export const projects: Project[] = [
   {
     id: "tally",
-    index: "01",
     name: "Tally",
-    kind: "Personal product",
-    period: "2026",
+    kind: "Personal project · 2026",
     oneLiner:
-      "I work shifts in a Dublin pub and was tracking my hours in my Notes app. Tally replaces that: enter the week's roster, confirm what you actually worked, and see what the week is worth and whether your savings goal lands on time.",
+      "A shift and pay tracker for part-time workers in Ireland. Enter the week's roster, confirm what you actually worked, and it tells you what the week is worth and whether your savings goal lands on time. I built it for my own bar job.",
+    detail:
+      "It stores the actual finish time and break for every shift, because that's where part-time pay goes missing. Money is kept in whole cents so totals always add up, and the AI assistant can only quote figures the app has calculated.",
+    stack: ["Next.js", "TypeScript", "Supabase", "Postgres", "Gemini API"],
     links: [
       { label: "Code", href: "https://github.com/matthewpoleary-dot/paytrackingapp" },
-      { label: "Live app (sign-in required)", href: "https://paytrackingapp.vercel.app" },
+      { label: "Live app", href: "https://paytrackingapp.vercel.app" },
     ],
-    business: [
-      {
-        k: "The problem",
-        v: "Part-time pay leaks where payroll assumes a default. It assumes you left at close, that you took your unpaid break, that no break was owed. Nobody writes down when that isn't true.",
-      },
-      {
-        k: "Who it's for",
-        v: "One user: me. Paid hourly, roster arrives Sunday night, entering a week of shifts on a phone.",
-      },
-      {
-        k: "Competing with the Notes app",
-        v: 'The Notes app. If logging a shift is slower than typing "fri 6-close", Tally loses. So the standing bar is four seconds from a cold start, and the ritual is weekly, not a daily nag.',
-      },
-      {
-        k: "The insight",
-        v: "Storing planned and actual times for every shift makes the log evidence, not arithmetic. It's a record the employer doesn't have, built without ever parsing a payslip.",
-      },
-      {
-        k: "Getting the law right",
-        v: "There is no statutory Sunday premium in Ireland. Section 14 of the Organisation of Working Time Act 1997 allows Sunday work to be built into the rate. So the app applies the user's own contract and only flags where an entitlement might exist. Every rule carries a source and the date it was checked.",
-      },
-      {
-        k: "Outcome",
-        v: "Live and in use for my own pay and savings. No other users, by design. The goal it serves: saving for my exchange semester.",
-      },
-    ],
-    technical: [
-      {
-        k: "Architecture",
-        v: "Next.js App Router and React 19 on Vercel, with Supabase for Postgres, auth and row-level security. Domain logic lives in plain TypeScript modules (lib/pay, lib/budget) that the UI and the AI share.",
-      },
-      {
-        k: "Money and time",
-        v: "Money is integer cents and durations are integer minutes, with timestamps stored in UTC and shown in Europe/Dublin. Shifts that cross midnight or a clock change are ordinary cases. Rounding is per shift, half up, and a period total is the sum of the rounded shifts, so the screen always reconciles.",
-      },
-      {
-        k: "History is immutable",
-        v: "Every shift stores the rate it was worked at. Changing your rate is a pay rise, not a rewrite: last month never quietly becomes worth more than it was.",
-      },
-      {
-        k: "AI that can't invent numbers",
-        v: "Gemini with tool-calling. The model narrates and the code calculates: every euro figure it states comes back from a tool. Every write it proposes is a card you confirm. Only computed aggregates are sent to it, never a merchant name.",
-      },
-      {
-        k: "Security, tested",
-        v: "Every table carries a user_id with an RLS policy, and a test suite attempts cross-user reads and asserts they fail. There are also domain, budget, CSV-import and AI test suites.",
-      },
-      {
-        k: "Data import",
-        v: "Parses a Revolut CSV statement into a spending breakdown. Open banking and payslip OCR were scoped out on purpose.",
-      },
-    ],
-    stack: ["Next.js", "TypeScript", "Supabase / Postgres", "Row-level security", "Gemini tool-calling", "Vercel"],
     images: [
       {
         src: "/work/tally-month.jpg",
-        alt: "Tally's month view: an estimated total for three shifts, a week calendar, and a notice that a Sunday was worked with no Sunday rate set.",
+        alt: "Tally's month view with sample data: an estimated total for three shifts, a week calendar, and a notice that a Sunday was worked with no Sunday rate set.",
         w: 1170,
         h: 2180,
         phone: true,
       },
       {
         src: "/work/tally-ask.jpg",
-        alt: "Tally's Ask tab, with suggested questions such as 'Am I on track?' answered from the app's own calculations.",
+        alt: "Tally's Ask tab, with suggested questions such as 'Am I on track?'.",
         w: 1170,
         h: 1680,
         phone: true,
       },
     ],
-    learned:
-      "Most of the work was deciding what the app should refuse to do: no invented pay rules, no estimates shown as fact, no streaks. Constraints written down early made every later decision faster.",
   },
   {
     id: "studywith",
-    index: "02",
     name: "StudyWith",
-    kind: "AI product",
-    period: "2026",
+    kind: "Founder · 2025 – Present",
     oneLiner:
-      "An AI study workspace for Irish Leaving Certificate students. A Socratic tutor that asks rather than tells, flashcards and quizzes generated from your own notes, and a revision planner weighted by how confident you are in each subject.",
+      "An AI tutoring platform for Leaving Cert students. The tutor asks questions instead of handing over answers, and students can turn their own notes into flashcards and quizzes.",
+    detail:
+      "I built it end to end, including Stripe billing with a free tier, credit packs, a subscription and school plans. I also did the cold outreach to Irish grinds and tutoring providers, and got positive engagement from an established grinds company.",
+    stack: ["Next.js", "TypeScript", "Supabase", "Stripe", "Groq"],
     links: [{ label: "Code", href: "https://github.com/matthewpoleary-dot/Studywith" }],
-    business: [
-      {
-        k: "The problem",
-        v: "A chatbot that hands over answers doesn't help someone who has to sit an exam alone. The tutor is built to question, not to do the work for you.",
-      },
-      {
-        k: "The commercial question",
-        v: "Every AI action has a real cost. The product had to stay generous enough to try and still not lose money on heavy use.",
-      },
-      {
-        k: "The model",
-        v: "Four ways in: a small monthly free allowance, a one-off credit pack, a recurring Pro plan with a daily fair-use limit, and school cohorts. Access is worked out from one entitlements table, so a new tier is a row, not a rewrite.",
-      },
-      {
-        k: "Refunds",
-        v: "If an AI action fails, the credit is refunded automatically. Charging students for our errors would cost more trust than it saves.",
-      },
-      {
-        k: "Outcome",
-        v: "Built end to end, including checkout, subscriptions and a billing portal. The access model was rebuilt in August 2026 without destroying the old one, so rollback stayed possible.",
-      },
-    ],
-    technical: [
-      {
-        k: "Architecture",
-        v: "Next.js 16 and React 19, with Supabase for auth, Postgres and private file storage, Groq for model inference, and Stripe for checkout, subscriptions and the customer portal.",
-      },
-      {
-        k: "Metering in the database",
-        v: "A Postgres function decides, per AI action, whether it's allowed. It checks active entitlements, consumes a credit under a row lock, and logs a usage event. A matching function refunds it if the call fails.",
-      },
-      {
-        k: "Payments",
-        v: "Stripe webhook handling for checkout, subscription and invoice events, with processed events recorded in their own table.",
-      },
-      {
-        k: "Study tools",
-        v: "Uploaded notes, including PDFs, become flashcards and quizzes. The planner shares out weekly sessions by a weight built from each subject's confidence and priority.",
-      },
-      {
-        k: "Safe migrations",
-        v: "A non-destructive v2 migration: the legacy column stayed for rollback, client access to legacy functions was removed, and attachments were locked to server-side access.",
-      },
-    ],
-    stack: ["Next.js", "TypeScript", "Supabase", "Stripe", "Groq", "PDF parsing"],
     images: [
       {
         src: "/work/studywith.jpg",
-        alt: "StudyWith's landing page, showing a tutor asking a Leaving Cert biology student guiding questions instead of giving the answer.",
+        alt: "StudyWith's landing page, showing a tutor asking a biology student guiding questions.",
         w: 2560,
         h: 1600,
       },
     ],
-    learned:
-      "Pricing is a product decision, not a page you add at the end. Deciding who gets what, and what happens when something fails, shaped the database before it shaped the UI.",
   },
   {
     id: "clients",
-    index: "03",
     name: "The Driving School Dublin",
-    kind: "Client work through ML Webdesign",
-    period: "2025 – now",
+    kind: "Client work through ML Webdesign · 2025 – Present",
     oneLiner:
-      "A website and lesson-request system for an RSA-approved driving instructor in Dublin, built through ML Webdesign, my freelance web design business. Live since August 2025, and I still maintain it.",
+      "Website and lesson-request system for an RSA-approved driving instructor in Dublin. Live since August 2025, and I still maintain it.",
+    detail:
+      "Available lesson slots are worked out from the instructor's weekly hours, lesson length, gaps between lessons and days off, so learners only see times he can actually do.",
+    stack: ["Next.js", "TypeScript", "Supabase", "Resend"],
     links: [
-      { label: "The Driving School Dublin", href: "https://thedrivingschooldublin.com" },
+      { label: "Website", href: "https://thedrivingschooldublin.com" },
       { label: "Code", href: "https://github.com/matthewpoleary-dot/TheDrivingSchoolDublin" },
     ],
-    business: [
-      {
-        k: "The client",
-        v: "An RSA-approved driving instructor serving learners across Dublin, teaching in manual and automatic cars.",
-      },
-      {
-        k: "What they needed",
-        v: "Learners needed to find him, see prices, and request lessons at times he could actually take them.",
-      },
-      {
-        k: "Scoping in phases",
-        v: "The site launched contact-first in August 2025, with the booking pages kept out of the first release.",
-      },
-      {
-        k: "After launch",
-        v: "I've kept maintaining it. In 2026 that meant restructuring the pricing layout and moving weekend pricing into the FAQ.",
-      },
-    ],
-    technical: [
-      {
-        k: "Availability engine",
-        v: "Slots are computed from a weekly template (working hours, slot interval, buffer after each lesson), then adjusted for one-off openings, blackout periods and existing bookings, checking for overlaps.",
-      },
-      {
-        k: "Lesson requests",
-        v: "Validated with Zod, stored in Postgres, and confirmed by email through Resend. A token-protected admin view manages bookings and status changes.",
-      },
-      {
-        k: "Getting time right",
-        v: "Fixed timezone drift so emails and the admin view format consistently in Europe/Dublin.",
-      },
-    ],
-    stack: ["Next.js", "TypeScript", "Supabase", "Resend", "Zod", "Vercel"],
     images: [
       {
         src: "/work/driving-school.jpg",
-        alt: "The Driving School Dublin homepage: professional driving lessons in Dublin, with contact and pricing buttons.",
+        alt: "The Driving School Dublin homepage, with contact and pricing buttons.",
         w: 2560,
         h: 1600,
       },
     ],
-    learned:
-      "Working for a client meant building what the business needed first, getting it live, and then changing it as the business changed.",
   },
 ];
 
-/** Smaller pieces from the degree. Group work, and labelled as such. */
-export const coursework = [
-  {
-    title: "Ryanair's social media strategy",
-    module: "Principles of Marketing · group essay",
-    body: "My section was the evidence base: a channel audit of Ryanair across TikTok, X and Instagram covering posting frequency, tone, and which content actually earns engagement.",
-  },
-  {
-    title: "TCD Societies Hub",
-    module: "Information Management · group report",
-    body: "Designing an information system for student societies, including how to stop an AI recommender favouring big societies over small ones.",
-  },
-];
-
-/** Dated, real decisions taken from the projects' own docs and history. */
 export const decisions = [
   {
     date: "2026-09-23",
@@ -343,60 +173,76 @@ export const decisions = [
 
 export const experience = [
   {
-    when: "Internship",
-    org: "Unio Wealth Management",
-    role: "Data Analysis Intern",
-    track: "Finance · Analysis",
-    did: "SQL, data cleansing and financial reporting.",
-    why: "",
-  },
-  {
-    when: "Student society",
-    org: "Trinity Student Managed Fund",
-    role: "Junior Analyst, Financial Banks",
-    track: "Finance · Research",
-    did: "Equity research covering the financial banks sector.",
-    why: "",
+    when: "2025 – Present",
+    role: "Founder",
+    org: "StudyWith",
+    did: "Built an AI tutoring platform for Leaving Cert students from prototype to a formal business listing. Led cold outreach to Irish grinds and tutoring providers.",
   },
   {
     when: "Aug 2025 – Present",
+    role: "Founder",
     org: "ML Webdesign",
-    role: "Founder, freelance web design",
-    track: "Clients · Building",
-    did: "My own freelance web design business. I built the website and lesson-request system for The Driving School Dublin, and I still maintain it.",
-    why: "",
+    did: "Freelance web design. Built and maintain the website and lesson-request system for The Driving School Dublin.",
   },
   {
-    when: "Alongside college",
-    org: "a Dublin pub",
-    role: "Part-time job",
-    track: "Work",
-    did: "Weekly rosters and evening shifts alongside my degree.",
-    why: "Where Tally came from: I wanted to check my pay against the hours I actually worked.",
+    when: "Summers 2025, 2026",
+    role: "Data Analysis Intern",
+    org: "Unio Wealth Management",
+    did: "Cleansed and validated large datasets for the data team, used SQL to track down and fix data quality issues, and organised the team's meetings.",
   },
+  {
+    when: "One year",
+    role: "Junior Analyst, Financial Banks",
+    org: "Trinity Student Managed Fund",
+    did: "Equity research on the financial banks sector.",
+  },
+  {
+    when: "Aug 2024 – Present",
+    role: "Bar work",
+    org: "Dublin",
+    did: "Bar and table service alongside college: The Swan Bar, then Rody Boland's in Rathmines, and now The Dropping Well.",
+  },
+];
+
+export const education = [
+  {
+    when: "2024 – Present",
+    title: "BA Business and Computer Science",
+    place: "Trinity College Dublin",
+    lines: [
+      "Year 3, currently achieving a 2:1.",
+      "Exchange semester at McGill University, Montreal, from January 2027.",
+    ],
+  },
+  {
+    when: "2018 – 2024",
+    title: "Leaving Certificate, 589 points",
+    place: "St Conleth's College",
+    lines: [
+      "H1s in French, Spanish and Biology, H2 in Maths. John Kelly Award for Academic Excellence in Spanish.",
+      "Head Boy and Senior Cup Rugby Captain.",
+    ],
+  },
+];
+
+export const toolbox = [
+  { k: "Code", v: "Java, TypeScript, SQL, ARM Assembly" },
+  { k: "Web", v: "React, Next.js, Tailwind CSS, Postgres, Supabase" },
+  { k: "Services", v: "Stripe, Vercel, AWS, Resend, Gemini and Groq APIs" },
+  { k: "Business", v: "Excel modelling, PowerPoint, data cleansing, equity research" },
+  { k: "Languages", v: "English, French, Spanish, Irish" },
 ];
 
 export const about = {
   paragraphs: [
-    "I'm in third year of Computer Science with a Business minor at Trinity. I work shifts in a Dublin pub, which is where Tally came from: I wanted to know whether the money that landed matched the hours I'd actually worked.",
-    "That's the pattern in most of what I do. Something is being done by hand, guessed at or assumed, and I want to know what it's really worth and whether software can make the answer clearer. Sometimes that means building. Sometimes it means a SQL query, a research note, or reading the legislation.",
-    "Next summer I want to be somewhere I can see how a business actually decides what to build, buy or change: consulting, product, data, fintech, or a technology team that sits close to the commercial side.",
+    "I'm in third year of Business and Computer Science at Trinity College Dublin. From January 2027 I'm on exchange at McGill University in Montreal.",
+    "I like building things that solve a problem I can see. Tally started because I wanted to check my pay from the bar against the hours I'd actually worked. StudyWith is bigger: a product, a pricing model, and pitching it to tutoring companies.",
+    "Next summer I want to work somewhere I can see how a business decides what to build, buy or change: consulting, product, data, fintech, or a technology team close to the commercial side.",
   ],
   now: [
-    { k: "Studying", v: "Year 3, Computer Science + Business, Trinity" },
-    { k: "Next", v: "Exchange semester at McGill University, Montreal, from January 2027" },
-    { k: "Building", v: "Tally, one weekly roster at a time" },
-    { k: "Looking for", v: "Summer 2027 internships, business and technology" },
+    { k: "Studying", v: "Year 3, Business and Computer Science, Trinity" },
+    { k: "Next", v: "McGill University, Montreal, from January 2027" },
+    { k: "Building", v: "Tally and StudyWith" },
+    { k: "Outside work", v: "Marathon training, golf, padel and rugby" },
   ],
-  offClock:
-    "My electives are in literature and classics. In 2026 that meant group work on ransom in Homer's Iliad, and an essay on Robert Louis Stevenson's Travels with a Donkey.",
-};
-
-export const education = {
-  when: "2024 – Present",
-  institution: "Trinity College Dublin",
-  degree: "Computer Science (major) with Business (minor)",
-  detail: "Year 3 · Currently achieving a 2:1",
-  exchange: "McGill University, Montreal · Exchange semester from January 2027",
-  modules: ["Information Management", "Principles of Marketing", "Economics"],
 };

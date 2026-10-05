@@ -50,9 +50,7 @@ export default function Hero({ cv, photo }: { cv: Cv; photo: string | null }) {
                 <GitHub />
               </a>
             </div>
-            <p className="mt-6 text-sm text-ink-3">
-              Looking for a summer 2027 internship in business or technology. Dublin, and Montreal from January 2027.
-            </p>
+            <p className="mt-6 text-sm text-ink-3">{hero.status}</p>
           </div>
 
           <div

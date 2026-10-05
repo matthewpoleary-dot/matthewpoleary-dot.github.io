@@ -20,7 +20,7 @@ Every fact on the site lives in [`content/site.ts`](content/site.ts): hero copy,
 
 ## Before launch
 
-1. **Add the CV.** Put the PDF at `public/Matthew-OLeary-CV.pdf`. Every CV button switches from "Request CV" (an email link) to "View CV" automatically on the next build.
+1. **Add the CV.** In Word, File → Save as PDF, then put it at `public/Matthew-OLeary-CV.pdf`. Every CV button switches from "Request CV" (an email link) to "View CV" automatically on the next build.
 2. **Add a photo (optional).** Put a square photo at `public/matthew.jpg` and the hero shows it instead of the screenshot collage.
 3. **Set the domain.** Once it's bought, set `NEXT_PUBLIC_SITE_URL` (e.g. `https://example.com`) in Vercel so canonical URLs, Open Graph and the sitemap use it. Until then the Vercel production URL is used.
 

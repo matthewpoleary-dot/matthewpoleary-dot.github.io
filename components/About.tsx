@@ -9,9 +9,6 @@ export default function About() {
             {p}
           </p>
         ))}
-        <p data-reveal className="text-base text-ink-3">
-          {about.offClock}
-        </p>
       </div>
 
       <div className="lg:col-span-5" data-reveal>
