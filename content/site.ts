@@ -191,7 +191,7 @@ export const experience = [
     did: "Cleansed and validated large datasets for the data team, used SQL to track down and fix data quality issues, and organised the team's meetings.",
   },
   {
-    when: "Sept 2025 – Sept 2026",
+    when: "Sept 2025 – May 2026",
     role: "Junior Analyst, Financial Banks",
     org: "Trinity Student Managed Fund",
     did: "Equity research on listed financial-sector banks for a student-run investment fund.",
