@@ -162,5 +162,5 @@ export const toolbox = [
   { k: "Services", v: "Stripe, Vercel, AWS, Resend, Gemini and Groq APIs" },
   { k: "Business", v: "Excel modelling, PowerPoint, data cleansing, equity research" },
   { k: "Languages", v: "English, French, Spanish, Irish" },
-  { k: "Outside work", v: "Running, golf, padel, rugby" },
+  { k: "Outside work", v: "Running, golf, padel, rugby, Classics and ancient history, quiz nights" },
 ];
