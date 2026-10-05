@@ -1,115 +1,111 @@
-import { glance, hero, person } from "@/content/site";
+import Image from "next/image";
+import { hero, person, stats } from "@/content/site";
 import type { Cv } from "@/lib/cv";
-import { ArrowDown, GitHub, LinkedIn, Mail } from "./Icons";
-import Spectrum from "./Spectrum";
+import { GitHub, LinkedIn } from "./Icons";
 
-export default function Hero({ cv }: { cv: Cv }) {
+export default function Hero({ cv, photo }: { cv: Cv; photo: string | null }) {
+  const cvProps = cv.available ? { target: "_blank", rel: "noopener" } : {};
+
   return (
-    <section id="top" aria-labelledby="hero-title" className="relative px-4 pb-16 pt-28 sm:px-8 sm:pt-36">
+    <section id="top" aria-labelledby="hero-title" className="px-4 pb-20 pt-28 sm:px-8 sm:pt-36">
       <div className="mx-auto max-w-6xl">
-        <p className="label rise flex flex-wrap items-center gap-x-3 gap-y-1">
-          <span className="inline-flex items-center gap-2">
-            <span aria-hidden="true" className="relative flex size-2">
-              <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-50 motion-reduce:hidden" />
-              <span className="relative inline-flex size-2 rounded-full bg-accent" />
-            </span>
-            <span className="text-ink-2">Open to summer 2027 internships</span>
-          </span>
-          <span aria-hidden="true">/</span>
-          <span>{hero.eyebrow}</span>
-        </p>
+        <div className="grid items-center gap-12 md:grid-cols-12">
+          <div className="rise md:col-span-7">
+            <p className="font-mono text-[0.95rem] text-accent">{person.name}</p>
+            <h1 id="hero-title" className="display mt-5 text-[clamp(2.25rem,5vw,3.6rem)] text-balance">
+              {hero.headline}
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-2">{hero.sub}</p>
 
-        <h1 id="hero-title" className="display mt-6 text-[clamp(2.6rem,8.4vw,6.6rem)]">
-          <span className="sr-only">{person.name}. </span>
-          {hero.headline.map((line, i) => (
-            <span
-              key={line}
-              className={`rise block ${i === 2 ? "italic text-accent" : ""}`}
-              style={{ "--d": `${80 + i * 110}ms` } as React.CSSProperties}
-            >
-              {line}
-            </span>
-          ))}
-        </h1>
-
-        <div className="mt-10 grid gap-10 md:grid-cols-12">
-          <p
-            className="rise text-lg leading-relaxed text-ink-2 md:col-span-7 md:text-xl"
-            style={{ "--d": "380ms" } as React.CSSProperties}
-          >
-            {hero.sub}
-          </p>
-
-          <div
-            className="rise flex flex-col gap-5 md:col-span-4 md:col-start-9"
-            style={{ "--d": "460ms" } as React.CSSProperties}
-          >
-            <div className="flex flex-wrap gap-3">
+            <div className="mt-9 flex flex-wrap items-center gap-2 sm:gap-3">
               <a
                 href="#work"
-                className="inline-flex h-12 items-center gap-2 rounded-full bg-ink px-6 font-medium text-paper transition-transform hover:-translate-y-px"
+                className="inline-flex h-12 items-center rounded-full bg-accent px-5 sm:px-6 font-medium text-accent-ink transition-opacity hover:opacity-90"
               >
-                See the work <ArrowDown />
+                View work
               </a>
               <a
                 href={cv.href}
-                {...(cv.available ? { target: "_blank", rel: "noopener" } : {})}
-                className="inline-flex h-12 items-center rounded-full border border-ink/30 px-6 font-medium transition-colors hover:border-ink"
+                {...cvProps}
+                className="inline-flex h-12 items-center rounded-full border border-rule px-5 sm:px-6 font-medium transition-colors hover:border-ink-3"
               >
                 {cv.label}
               </a>
+              <a
+                href={person.linkedin}
+                target="_blank"
+                rel="noopener"
+                aria-label="LinkedIn"
+                className="inline-flex size-12 items-center justify-center rounded-full border border-rule text-ink-2 transition-colors hover:border-ink-3 hover:text-ink"
+              >
+                <LinkedIn />
+              </a>
+              <a
+                href={person.github}
+                target="_blank"
+                rel="noopener"
+                aria-label="GitHub"
+                className="inline-flex size-12 items-center justify-center rounded-full border border-rule text-ink-2 transition-colors hover:border-ink-3 hover:text-ink"
+              >
+                <GitHub />
+              </a>
             </div>
-            <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-ink-2" aria-label="Contact links">
-              <li>
-                <a href={`mailto:${person.email}`} className="inline-flex min-h-11 items-center gap-2 hover:text-ink">
-                  <Mail /> <span className="link">Email</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={person.linkedin}
-                  target="_blank"
-                  rel="noopener"
-                  className="inline-flex min-h-11 items-center gap-2 hover:text-ink"
-                >
-                  <LinkedIn /> <span className="link">LinkedIn</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={person.github}
-                  target="_blank"
-                  rel="noopener"
-                  className="inline-flex min-h-11 items-center gap-2 hover:text-ink"
-                >
-                  <GitHub /> <span className="link">GitHub</span>
-                </a>
-              </li>
-            </ul>
-            <p className="text-sm text-ink-3">Dublin · Montreal from January 2027</p>
+            <p className="mt-6 text-sm text-ink-3">
+              Looking for a summer 2027 internship in business or technology. Dublin, and Montreal from January 2027.
+            </p>
+          </div>
+
+          <div className="rise md:col-span-5" style={{ "--d": "120ms" } as React.CSSProperties}>
+            {photo ? (
+              <Image
+                src={photo}
+                alt={person.name}
+                width={900}
+                height={900}
+                priority
+                className="aspect-square w-full rounded-2xl object-cover shadow-[0_30px_80px_-30px_rgb(0_0_0/0.6)]"
+              />
+            ) : (
+              <figure className="relative pb-10 pr-6 sm:pr-10">
+                <Image
+                  src="/work/driving-school.jpg"
+                  alt="The Driving School Dublin website, which I built and maintain for a client."
+                  width={2560}
+                  height={1600}
+                  priority
+                  sizes="(min-width: 768px) 440px, 90vw"
+                  className="w-full rounded-xl border border-rule"
+                />
+                <Image
+                  src="/work/tally-month.jpg"
+                  alt="Tally, the pay tracker I built for my part-time job, with sample data."
+                  width={1170}
+                  height={2180}
+                  priority
+                  sizes="(min-width: 768px) 150px, 36vw"
+                  className="absolute bottom-0 right-0 aspect-[1170/1700] w-[36%] rounded-[1.25rem] border border-rule object-cover object-top shadow-[0_24px_60px_-20px_rgb(0_0_0/0.7)]"
+                />
+                <figcaption className="label mt-3 pr-[40%]">Client site, and Tally with sample data</figcaption>
+              </figure>
+            )}
           </div>
         </div>
 
-        <div className="mt-16 border-t border-rule pt-8">
-          <Spectrum />
-        </div>
-
-        <dl className="mt-14 grid grid-cols-1 border-y border-rule sm:grid-cols-2 lg:grid-cols-4">
-          {glance.map((g, i) => (
-            <div
-              key={g.label}
+        <ul className="mt-20 grid grid-cols-2 border-t border-rule lg:grid-cols-4">
+          {stats.map((s, i) => (
+            <li
+              key={s.label}
               data-reveal
-              style={{ "--d": `${i * 70}ms` } as React.CSSProperties}
-              className={`py-6 sm:px-5 ${i > 0 ? "border-t border-rule sm:border-t-0" : ""} ${
-                i % 2 === 1 ? "sm:border-l" : ""
-              } ${i === 2 ? "sm:border-t lg:border-t-0 lg:border-l" : ""} ${i === 3 ? "sm:border-t lg:border-t-0" : ""} border-rule first:sm:pl-0`}
+              style={{ "--d": `${i * 60}ms` } as React.CSSProperties}
+              className={`py-6 pr-4 ${i % 2 === 1 ? "border-l border-rule pl-5" : ""} ${
+                i === 2 ? "border-t border-rule lg:border-l lg:border-t-0 lg:pl-5" : ""
+              } ${i === 3 ? "border-t lg:border-t-0" : ""}`}
             >
-              <dt className="label">{g.label}</dt>
-              <dd className="mt-2 text-lg font-medium leading-snug">{g.value}</dd>
-              <dd className="mt-1 text-sm text-ink-3">{g.note}</dd>
-            </div>
+              <p className="font-mono text-4xl tracking-tight sm:text-5xl">{s.value}</p>
+              <p className="mt-2 text-sm leading-snug text-ink-2">{s.label}</p>
+            </li>
           ))}
-        </dl>
+        </ul>
       </div>
     </section>
   );

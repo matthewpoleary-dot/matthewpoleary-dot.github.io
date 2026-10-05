@@ -12,35 +12,20 @@ export default function OG() {
         height: "100%",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
+        justifyContent: "flex-end",
+        gap: 40,
         background: "#f4f1ea",
         color: "#16150f",
         padding: "72px 80px",
         fontFamily: "serif",
       }}
     >
+      <span style={{ fontSize: 120, lineHeight: 1 }}>Matthew O&apos;Leary</span>
       <div
-        style={{
-          display: "flex",
-          fontSize: 24,
-          letterSpacing: 3,
-          textTransform: "uppercase",
-          color: "#6b675b",
-          fontFamily: "monospace",
-        }}
+        style={{ display: "flex", flexDirection: "column", fontSize: 34, color: "#4a473d", fontFamily: "sans-serif" }}
       >
-        Computer Science & Business · Trinity College Dublin
-      </div>
-      <div style={{ display: "flex", flexDirection: "column", fontSize: 76, lineHeight: 1.05 }}>
-        <span>I find out what a problem</span>
-        <span>is really costing,</span>
-        <span style={{ color: "#b23a12", fontStyle: "italic" }}>then build the fix.</span>
-      </div>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", fontSize: 30 }}>
-        <span>Matthew O&apos;Leary</span>
-        <span style={{ fontSize: 22, color: "#4a473d", fontFamily: "monospace" }}>
-          Summer 2027 · Business × Technology
-        </span>
+        <span>Computer Science and Business, Trinity College Dublin</span>
+        <span style={{ marginTop: 12 }}>Looking for a summer 2027 internship in business or technology</span>
       </div>
     </div>,
     size,

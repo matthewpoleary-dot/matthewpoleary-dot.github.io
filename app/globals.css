@@ -1,37 +1,32 @@
 @import "tailwindcss";
 
-/*
- * Paper and ink. One accent, used sparingly: it marks the point where
- * business and technology meet, and nothing else.
- */
+/* Dark by default; light when the visitor chooses it. One accent colour. */
 :root {
-  --paper: #f4f1ea;
-  --paper-2: #ebe6db;
-  --ink: #16150f;
-  --ink-2: #4a473d;
-  --ink-3: #6b675b;
-  --rule: #d6d0c2;
-  --accent: #b23a12;
-  --accent-soft: #f0d9cc;
-  --biz: #1f4f46;
-  --tech: #2b3f8c;
-  color-scheme: light;
+  --paper: #0b0c0e;
+  --paper-2: #141518;
+  --ink: #ecebe8;
+  --ink-2: #a9a7a2;
+  --ink-3: #8b8984;
+  --rule: #24262b;
+  --accent: #e8703f;
+  --accent-ink: #0b0c0e;
+  --biz: #7cc4b2;
+  --tech: #9fb2f0;
+  color-scheme: dark;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #12110e;
-    --paper-2: #1c1a16;
-    --ink: #f1ede4;
-    --ink-2: #c4bfb2;
-    --ink-3: #a19c8f;
-    --rule: #34312a;
-    --accent: #f08a5d;
-    --accent-soft: #3a2116;
-    --biz: #7fc3b3;
-    --tech: #9db0f2;
-    color-scheme: dark;
-  }
+:root[data-theme="light"] {
+  --paper: #f7f6f3;
+  --paper-2: #ffffff;
+  --ink: #141414;
+  --ink-2: #4c4b47;
+  --ink-3: #66645f;
+  --rule: #e2e0da;
+  --accent: #b84a1b;
+  --accent-ink: #ffffff;
+  --biz: #1f5c50;
+  --tech: #2f45a0;
+  color-scheme: light;
 }
 
 @theme inline {
@@ -42,11 +37,10 @@
   --color-ink-3: var(--ink-3);
   --color-rule: var(--rule);
   --color-accent: var(--accent);
-  --color-accent-soft: var(--accent-soft);
+  --color-accent-ink: var(--accent-ink);
   --color-biz: var(--biz);
   --color-tech: var(--tech);
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-serif-display), ui-serif, Georgia, serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
@@ -60,51 +54,44 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-sans);
-  font-feature-settings: "ss01", "cv11";
-  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
   background: var(--accent);
-  color: var(--paper);
+  color: var(--accent-ink);
 }
 
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
-/* In the components layer so Tailwind utilities (colours especially) can override them. */
 @layer components {
   .tnum {
     font-variant-numeric: tabular-nums;
   }
 
-  /* Section label: small, mono, numbered. Used as the site's wayfinding. */
+  /* Small mono label, sentence case. */
   .label {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-size: 0.8rem;
     color: var(--ink-3);
   }
 
   .display {
-    font-family: var(--font-serif);
-    font-weight: 400;
-    letter-spacing: -0.015em;
-    line-height: 1.02;
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
   }
 
-  /* Underline that draws in on hover. */
   .link {
     background-image: linear-gradient(currentColor, currentColor);
     background-size: 0% 1px;
     background-position: 0 100%;
     background-repeat: no-repeat;
-    transition: background-size 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition: background-size 0.3s ease;
   }
   .link:hover,
   .link:focus-visible {
@@ -115,10 +102,10 @@ body {
 /* Scroll reveal. Content is visible by default; JS opts it into the effect. */
 .js [data-reveal] {
   opacity: 0;
-  transform: translateY(14px);
+  transform: translateY(12px);
   transition:
-    opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
-    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    opacity 0.6s ease,
+    transform 0.6s ease;
   transition-delay: var(--d, 0ms);
 }
 .js [data-reveal].in {
@@ -129,7 +116,7 @@ body {
 @keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(0.4em);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -137,7 +124,7 @@ body {
   }
 }
 .rise {
-  animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation: rise 0.6s ease both;
   animation-delay: var(--d, 0ms);
 }
 

@@ -29,16 +29,16 @@ export default function PayLeakDemo() {
   const fmt = (m: number) => `${String(Math.floor(m / 60) % 24).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
 
   return (
-    <div className="rounded-2xl border border-rule bg-paper-2/60 p-5 sm:p-7">
+    <div className="rounded-2xl border border-rule bg-paper p-5 sm:p-7">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h4 className="font-medium">Try the idea: what payroll assumes vs what happened</h4>
+        <h4 className="font-semibold tracking-tight">Try the idea: what payroll assumes vs what happened</h4>
         <p className="label">Illustrative numbers, not my pay</p>
       </div>
 
       {/* Timeline of one shift */}
       <div className="mt-6" aria-hidden="true">
         <div className="relative h-10 rounded-md bg-paper">
-          <div className="absolute inset-y-0 rounded-l-md bg-ink/80" style={{ left: 0, width: pct(END) }} />
+          <div className="absolute inset-y-0 rounded-l-md bg-ink-3/45" style={{ left: 0, width: pct(END) }} />
           <div
             className={`absolute inset-y-0 transition-all duration-300 ${
               breakTaken ? "bg-paper" : "bg-[repeating-linear-gradient(135deg,var(--accent)_0_4px,transparent_4px_8px)]"
@@ -120,7 +120,7 @@ export default function PayLeakDemo() {
         </div>
 
         <dl
-          className="grid content-start gap-px overflow-hidden rounded-xl border border-rule bg-rule"
+          className="grid content-start self-start gap-px overflow-hidden rounded-xl border border-rule bg-rule"
           aria-live="polite"
         >
           <Row k="Unrecorded time per shift" v={`${unpaid} min`} />
@@ -141,7 +141,7 @@ export default function PayLeakDemo() {
 
 function Row({ k, v, strong }: { k: string; v: string; strong?: boolean }) {
   return (
-    <div className="flex items-baseline justify-between gap-4 bg-paper px-4 py-3">
+    <div className="flex items-baseline justify-between gap-4 bg-paper-2 px-4 py-3">
       <dt className="text-sm text-ink-2">{k}</dt>
       <dd className={`tnum ${strong ? "text-2xl font-medium" : "font-medium"}`}>{v}</dd>
     </div>

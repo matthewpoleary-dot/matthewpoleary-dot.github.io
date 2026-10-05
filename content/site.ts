@@ -25,174 +25,23 @@ export const person = {
 };
 
 export const hero = {
-  eyebrow: "Computer Science & Business · Trinity College Dublin",
-  headline: ["I find out what a problem", "is really costing,", "then build the fix."],
-  sub: "I'm a third-year student who builds software for real businesses and keeps asking the commercial question behind it. So far that means websites for paying clients, an AI study product with its own pricing model, and a pay tracker built around Irish employment law. Alongside that: data analysis at a wealth manager and equity research in Trinity's student fund.",
+  headline: "I build software for small businesses, and for my own part‑time job.",
+  sub: "Computer Science and Business at Trinity College Dublin. Data analysis at Unio Wealth Management, equity research with the Trinity Student Managed Fund, and my own web design business on the side.",
 };
 
-/** The 10-second scan. Four facts, all checkable. */
-export const glance = [
-  { label: "Studying", value: "Computer Science + Business", note: "Trinity College Dublin · Year 3 · 2:1" },
-  { label: "Analysis", value: "Data Analysis Intern", note: "Unio Wealth Management" },
-  { label: "Research", value: "Junior Analyst, Financial Banks", note: "Trinity Student Managed Fund" },
-  { label: "Building", value: "Own web business + 2 products", note: "ML Webdesign · StudyWith · Tally" },
+/** Hero numbers. Small, but every one is checkable in a repo or on my transcript. */
+export const stats = [
+  { value: "2", label: "Client websites live, built through ML Webdesign" },
+  { value: "4", label: "Ways to pay in StudyWith: free, credit pack, subscription, schools" },
+  { value: "30", label: "Security tests on Tally that try to read another user's data" },
+  { value: "2:1", label: "Current grade in Computer Science and Business" },
 ];
 
-/** Placement on the hero spectrum is Matthew's own reading of each piece of work. */
-export const spectrum = [
-  { id: "tsmf", label: "Equity research", where: "Trinity Student Managed Fund", pos: 6, href: "#experience" },
-  { id: "unio", label: "Data analysis", where: "Unio Wealth Management", pos: 28, href: "#experience" },
-  { id: "clients", label: "Client websites", where: "ML Webdesign", pos: 50, href: "#work-clients" },
-  { id: "studywith", label: "StudyWith", where: "Pricing model + AI product", pos: 66, href: "#work-studywith" },
-  { id: "tally", label: "Tally", where: "Employment law + pay engine", pos: 82, href: "#work-tally" },
-];
-
-/** The signature section: business question → data/tech → build → decision. */
-export const intersections = [
-  {
-    id: "tally",
-    project: "Tally",
-    steps: [
-      { k: "The question", v: "Is the money that lands in my account what my hours were actually worth?" },
-      {
-        k: "The data",
-        v: "Planned and actual finish times and breaks for every shift, plus pay rules read from the Organisation of Working Time Act, each with a source and a date.",
-      },
-      {
-        k: "The build",
-        v: "A phone-first app with a pay engine that works in whole cents, so every row on screen adds up to its total.",
-      },
-      {
-        k: "The decision",
-        v: "Store what really happened, not what payroll assumes. That turns a calculator into a record you can argue with.",
-      },
-    ],
-  },
-  {
-    id: "studywith",
-    project: "StudyWith",
-    steps: [
-      { k: "The question", v: "How do you charge for an AI product when every single use costs you money?" },
-      { k: "The data", v: "One usage event per AI action, checked against what the student's plan entitles them to." },
-      {
-        k: "The build",
-        v: "Four ways in: a small free allowance, a one-off credit pack, a subscription with a fair-use cap, and school cohorts. Billing runs through Stripe.",
-      },
-      {
-        k: "The decision",
-        v: "If the AI call fails, the student gets the credit back. Nobody should pay for our errors.",
-      },
-    ],
-  },
-  {
-    id: "clients",
-    project: "The Driving School Dublin",
-    steps: [
-      { k: "The question", v: "How do learners see when an instructor can actually take them, without a phone call?" },
-      {
-        k: "The data",
-        v: "Weekly working hours, lesson length, buffers between lessons, one-off openings and blackout days.",
-      },
-      {
-        k: "The build",
-        v: "An availability engine that turns those rules into requestable slots, with an admin view and email notifications.",
-      },
-      {
-        k: "The decision",
-        v: "Ship in phases. The first release in August 2025 was contact-first; structure came once the site was running.",
-      },
-    ],
-  },
-];
-
-export type Capability = { title: string; body: string; evidence: { label: string; href: string }[] };
-
-export const capabilities: { group: string; lead: string; items: Capability[] }[] = [
-  {
-    group: "Business",
-    lead: "Understanding what something is worth and who it's for.",
-    items: [
-      {
-        title: "Designing how a product makes money",
-        body: "Free allowance, credit pack, subscription and school tiers for an AI product, with usage limits that protect the margin.",
-        evidence: [{ label: "StudyWith", href: "#work-studywith" }],
-      },
-      {
-        title: "Delivering for real clients",
-        body: "Scoping, building and then maintaining sites for small Irish businesses, including changes to pricing and FAQs months after launch.",
-        evidence: [{ label: "ML Webdesign", href: "#work-clients" }],
-      },
-      {
-        title: "Research from primary sources",
-        body: "Equity research on banks, a social media channel audit of Ryanair, and reading Irish employment law closely enough to build on it.",
-        evidence: [
-          { label: "Student Managed Fund", href: "#experience" },
-          { label: "Tally", href: "#work-tally" },
-        ],
-      },
-    ],
-  },
-  {
-    group: "Analysis",
-    lead: "Getting from messy information to a number you can trust.",
-    items: [
-      {
-        title: "SQL and data cleaning",
-        body: "SQL, data cleansing and financial reporting in a wealth management setting, and Postgres schemas behind every product I've built.",
-        evidence: [
-          { label: "Unio", href: "#experience" },
-          { label: "Projects", href: "#work" },
-        ],
-      },
-      {
-        title: "Handling money properly",
-        body: "Integer cents, rounding rules stated up front, and totals that always reconcile with the rows above them.",
-        evidence: [{ label: "Tally", href: "#work-tally" }],
-      },
-      {
-        title: "Turning data into a decision",
-        body: "A bank statement export becomes a spending breakdown, which becomes a yes or no on whether a savings goal lands by its deadline.",
-        evidence: [{ label: "Tally", href: "#work-tally" }],
-      },
-    ],
-  },
-  {
-    group: "Technology",
-    lead: "Building the thing, properly, and knowing where it can break.",
-    items: [
-      {
-        title: "Full-stack web products",
-        body: "TypeScript, React and Next.js on the front, Postgres via Supabase behind it, deployed on Vercel. Payments through Stripe.",
-        evidence: [
-          { label: "Tally", href: "#work-tally" },
-          { label: "StudyWith", href: "#work-studywith" },
-        ],
-      },
-      {
-        title: "AI with guardrails",
-        body: "Language models that call tools for every figure they state, propose changes instead of making them, and only ever see aggregates.",
-        evidence: [{ label: "Tally", href: "#work-tally" }],
-      },
-      {
-        title: "Protecting people's data",
-        body: "Row-level security on every table, tested by trying to read another user's data and checking it fails.",
-        evidence: [{ label: "Tally", href: "#work-tally" }],
-      },
-    ],
-  },
-];
-
-export const toolbelt = [
-  "TypeScript",
-  "React",
-  "Next.js",
-  "SQL / Postgres",
-  "Supabase",
-  "Stripe",
-  "Java",
-  "AWS",
-  "Git",
-  "Tailwind CSS",
+export const toolbox = [
+  { k: "Code", v: "TypeScript, Java, SQL" },
+  { k: "Web", v: "React, Next.js, Tailwind CSS, Postgres, Supabase" },
+  { k: "Services", v: "Stripe, Vercel, AWS, Resend, Gemini and Groq APIs" },
+  { k: "Business", v: "Equity research, financial reporting, data cleansing, pricing design" },
 ];
 
 export type Project = {
@@ -207,6 +56,7 @@ export type Project = {
   technical: { k: string; v: string }[];
   stack: string[];
   learned: string;
+  images: { src: string; alt: string; w: number; h: number; phone?: boolean }[];
 };
 
 export const projects: Project[] = [
@@ -229,10 +79,10 @@ export const projects: Project[] = [
       },
       {
         k: "Who it's for",
-        v: "One user: me. Paid hourly, roster arrives Sunday night, entering a week of shifts on a phone. Designing for one real person kept every decision honest.",
+        v: "One user: me. Paid hourly, roster arrives Sunday night, entering a week of shifts on a phone.",
       },
       {
-        k: "The real competitor",
+        k: "Competing with the Notes app",
         v: 'The Notes app. If logging a shift is slower than typing "fri 6-close", Tally loses. So the standing bar is four seconds from a cold start, and the ritual is weekly, not a daily nag.',
       },
       {
@@ -275,6 +125,22 @@ export const projects: Project[] = [
       },
     ],
     stack: ["Next.js", "TypeScript", "Supabase / Postgres", "Row-level security", "Gemini tool-calling", "Vercel"],
+    images: [
+      {
+        src: "/work/tally-month.jpg",
+        alt: "Tally's month view: an estimated total for three shifts, a week calendar, and a notice that a Sunday was worked with no Sunday rate set.",
+        w: 1170,
+        h: 2180,
+        phone: true,
+      },
+      {
+        src: "/work/tally-ask.jpg",
+        alt: "Tally's Ask tab, with suggested questions such as 'Am I on track?' answered from the app's own calculations.",
+        w: 1170,
+        h: 1680,
+        phone: true,
+      },
+    ],
     learned:
       "Most of the work was deciding what the app should refuse to do: no invented pay rules, no estimates shown as fact, no streaks. Constraints written down early made every later decision faster.",
   },
@@ -301,7 +167,7 @@ export const projects: Project[] = [
         v: "Four ways in: a small monthly free allowance, a one-off credit pack, a recurring Pro plan with a daily fair-use limit, and school cohorts. Access is worked out from one entitlements table, so a new tier is a row, not a rewrite.",
       },
       {
-        k: "Fairness as policy",
+        k: "Refunds",
         v: "If an AI action fails, the credit is refunded automatically. Charging students for our errors would cost more trust than it saves.",
       },
       {
@@ -332,6 +198,14 @@ export const projects: Project[] = [
       },
     ],
     stack: ["Next.js", "TypeScript", "Supabase", "Stripe", "Groq", "PDF parsing"],
+    images: [
+      {
+        src: "/work/studywith.jpg",
+        alt: "StudyWith's landing page, showing a tutor asking a Leaving Cert biology student guiding questions instead of giving the answer.",
+        w: 2560,
+        h: 1600,
+      },
+    ],
     learned:
       "Pricing is a product decision, not a page you add at the end. Deciding who gets what, and what happens when something fails, shaped the database before it shaped the UI.",
   },
@@ -385,6 +259,14 @@ export const projects: Project[] = [
       },
     ],
     stack: ["Next.js", "TypeScript", "Supabase", "Resend", "Zod", "Vercel"],
+    images: [
+      {
+        src: "/work/driving-school.jpg",
+        alt: "The Driving School Dublin homepage: professional driving lessons in Dublin, with contact and pricing buttons.",
+        w: 2560,
+        h: 1600,
+      },
+    ],
     learned:
       "A client cares whether the phone rings, not about the stack. Translating a small business's problem into a site, then staying around to change it, taught me more than any brief.",
   },
@@ -417,7 +299,7 @@ export const decisions = [
     date: "2026-09-21",
     project: "Tally",
     decision: "The AI proposes and the user confirms. It never writes silently.",
-    why: "If you can't see what changed, you can't trust the numbers.",
+    why: "Changes to pay or savings data should always be something the user has seen and agreed to.",
     tag: "Product",
   },
   {
@@ -431,7 +313,7 @@ export const decisions = [
     date: "2026-09-20",
     project: "Tally",
     decision: "Every shift stores the rate it was worked at.",
-    why: "Otherwise a pay rise silently re-prices last month, and the record stops being a record.",
+    why: "Otherwise a pay rise would quietly change what last month was worth.",
     tag: "Engineering",
   },
   {
@@ -445,53 +327,57 @@ export const decisions = [
     date: "2026-08-10",
     project: "StudyWith",
     decision: "A failed AI action refunds the student's credit automatically.",
-    why: "Customers shouldn't pay for our errors.",
+    why: "Students shouldn't lose a credit for a request that failed on our side.",
     tag: "Commercial",
   },
   {
     date: "2026-08-10",
     project: "StudyWith",
     decision: "Rebuild access around entitlements, but keep the old column for rollback.",
-    why: "A migration you can't undo is a bet. This one stayed reversible.",
+    why: "If the new access model had a problem, the old data was still there to fall back to.",
     tag: "Engineering",
   },
   {
     date: "2025-08-20",
     project: "Driving School",
     decision: "Launch contact-first. The booking flow waits.",
-    why: "A working site in a client's hands beats a complete one on my laptop.",
+    why: "It got the site live sooner. The booking pages were taken out of the first release and kept separate.",
     tag: "Commercial",
   },
 ];
 
 export const experience = [
   {
+    when: "Internship",
     org: "Unio Wealth Management",
     role: "Data Analysis Intern",
     track: "Finance · Analysis",
     did: "SQL, data cleansing and financial reporting.",
-    why: "The analytical side of the same skill I use when building: getting data into a state where the numbers can be trusted, then reporting them to people who make decisions from them.",
+    why: "",
   },
   {
+    when: "Student society",
     org: "Trinity Student Managed Fund",
     role: "Junior Analyst, Financial Banks",
     track: "Finance · Research",
     did: "Equity research covering the financial banks sector.",
-    why: "Reading a business from the outside: how it makes money, what could change that, and what the market already assumes.",
+    why: "",
   },
   {
+    when: "Aug 2025 – Present",
     org: "ML Webdesign",
     role: "Founder, freelance web design",
     track: "Clients · Building",
     did: "Running my own small web business: finding the brief, building the site, and maintaining it for clients including The Driving School Dublin and a Dublin grinds school.",
-    why: "Real clients, real deadlines, and the work isn't finished when it launches.",
+    why: "The clients are small businesses, and I keep maintaining their sites after launch.",
   },
   {
-    org: "A Dublin pub",
-    role: "Part-time, hospitality",
+    when: "Alongside college",
+    org: "a Dublin pub",
+    role: "Part-time job",
     track: "Work",
     did: "Weekly rosters and evening shifts alongside my degree.",
-    why: "Where Tally came from. A problem I lived with every week became the most rigorous thing I've built.",
+    why: "Where Tally came from: I wanted to check my pay against the hours I actually worked.",
   },
 ];
 
@@ -512,6 +398,7 @@ export const about = {
 };
 
 export const education = {
+  when: "2024 – Present",
   institution: "Trinity College Dublin",
   degree: "Computer Science (major) with Business (minor)",
   detail: "Year 3 · Currently achieving a 2:1",
