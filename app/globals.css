@@ -1,0 +1,160 @@
+@import "tailwindcss";
+
+/*
+ * Paper and ink. One accent, used sparingly: it marks the point where
+ * business and technology meet, and nothing else.
+ */
+:root {
+  --paper: #f4f1ea;
+  --paper-2: #ebe6db;
+  --ink: #16150f;
+  --ink-2: #4a473d;
+  --ink-3: #6b675b;
+  --rule: #d6d0c2;
+  --accent: #b23a12;
+  --accent-soft: #f0d9cc;
+  --biz: #1f4f46;
+  --tech: #2b3f8c;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12110e;
+    --paper-2: #1c1a16;
+    --ink: #f1ede4;
+    --ink-2: #c4bfb2;
+    --ink-3: #a19c8f;
+    --rule: #34312a;
+    --accent: #f08a5d;
+    --accent-soft: #3a2116;
+    --biz: #7fc3b3;
+    --tech: #9db0f2;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-rule: var(--rule);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-biz: var(--biz);
+  --color-tech: var(--tech);
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif-display), ui-serif, Georgia, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* In the components layer so Tailwind utilities (colours especially) can override them. */
+@layer components {
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Section label: small, mono, numbered. Used as the site's wayfinding. */
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .display {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    line-height: 1.02;
+  }
+
+  /* Underline that draws in on hover. */
+  .link {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .link:hover,
+  .link:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+
+/* Scroll reveal. Content is visible by default; JS opts it into the effect. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--d, 0ms);
+}
+.js [data-reveal].in {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.4em);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
+  }
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
