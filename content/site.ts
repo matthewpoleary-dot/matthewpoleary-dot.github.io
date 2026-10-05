@@ -16,7 +16,7 @@ export const person = {
 
 export const hero = {
   headline: "I build software for a Dublin driving school, and for my own part\u2011time job.",
-  sub: "Business and Computer Science at Trinity College Dublin. Two summers as a data analysis intern at Unio Wealth Management, a year as a junior analyst in the Trinity Student Managed Fund, and founder of StudyWith.",
+  sub: "Computer Science (major) and Business (minor) at Trinity College Dublin. Two summers as a data analysis intern at Unio Wealth Management, a year as a junior analyst in the Trinity Student Managed Fund, and founder of StudyWith.",
   status: "Looking for a summer 2027 internship.",
 };
 
@@ -44,7 +44,7 @@ export const projects: Project[] = [
     name: "Tally",
     kind: "Personal project · 2026",
     oneLiner:
-      "A shift and pay tracker for part-time workers in Ireland. Enter the week's roster, confirm what you actually worked, and it tells you what the week is worth and whether your savings goal lands on time. I built it for my own bar job.",
+      "A shift and pay tracker for part-time workers in Ireland. Enter the week's roster, confirm what you actually worked, and it tells you what the week is worth and whether your savings goal lands on time. I built it for my own part-time job.",
     detail:
       "It stores the actual finish time and break for every shift, because that's where part-time pay goes missing. Money is kept in whole cents so totals always add up, and the AI assistant can only quote figures the app has calculated.",
     stack: ["Next.js", "TypeScript", "Supabase", "Postgres", "Gemini API"],
@@ -191,23 +191,17 @@ export const experience = [
     did: "Cleansed and validated large datasets for the data team, used SQL to track down and fix data quality issues, and organised the team's meetings.",
   },
   {
-    when: "One year",
+    when: "Sept 2025 – Sept 2026",
     role: "Junior Analyst, Financial Banks",
     org: "Trinity Student Managed Fund",
-    did: "Equity research on the financial banks sector.",
-  },
-  {
-    when: "Aug 2024 – Present",
-    role: "Bar work",
-    org: "Dublin",
-    did: "Bar and table service alongside college: The Swan Bar, then Rody Boland's in Rathmines, and now The Dropping Well.",
+    did: "Equity research on listed financial-sector banks for a student-run investment fund.",
   },
 ];
 
 export const education = [
   {
     when: "2024 – Present",
-    title: "BA Business and Computer Science",
+    title: "BA Computer Science (Major) and Business (Minor)",
     place: "Trinity College Dublin",
     lines: [
       "Year 3, currently achieving a 2:1.",
@@ -235,12 +229,12 @@ export const toolbox = [
 
 export const about = {
   paragraphs: [
-    "I'm in third year of Business and Computer Science at Trinity College Dublin. From January 2027 I'm on exchange at McGill University in Montreal.",
-    "I like building things that solve a problem I can see. Tally started because I wanted to check my pay from the bar against the hours I'd actually worked. StudyWith is bigger: a product, a pricing model, and pitching it to tutoring companies.",
+    "I'm in third year at Trinity College Dublin, majoring in Computer Science with a minor in Business. From January 2027 I'm on exchange at McGill University in Montreal.",
+    "I like building things that solve a problem I can see. Tally started because I wanted to check my pay from my part-time job against the hours I'd actually worked. StudyWith is bigger: a product, a pricing model, and pitching it to tutoring companies.",
     "Next summer I want to work somewhere I can see how a business decides what to build, buy or change: consulting, product, data, fintech, or a technology team close to the commercial side.",
   ],
   now: [
-    { k: "Studying", v: "Year 3, Business and Computer Science, Trinity" },
+    { k: "Studying", v: "Year 3, Computer Science and Business, Trinity" },
     { k: "Next", v: "McGill University, Montreal, from January 2027" },
     { k: "Building", v: "Tally and StudyWith" },
     { k: "Outside work", v: "Marathon training, golf, padel and rugby" },
