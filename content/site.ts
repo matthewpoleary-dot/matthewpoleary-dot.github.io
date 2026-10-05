@@ -25,13 +25,13 @@ export const person = {
 };
 
 export const hero = {
-  headline: "I build software for small businesses, and for my own part‑time job.",
+  headline: "I build software for a Dublin driving school, and for my own part‑time job.",
   sub: "Computer Science and Business at Trinity College Dublin. Data analysis at Unio Wealth Management, equity research with the Trinity Student Managed Fund, and my own web design business on the side.",
 };
 
 /** Hero numbers. Small, but every one is checkable in a repo or on my transcript. */
 export const stats = [
-  { value: "2", label: "Client websites live, built through ML Webdesign" },
+  { value: "3", label: "Products built end to end: Tally, StudyWith and a client's booking site" },
   { value: "4", label: "Ways to pay in StudyWith: free, credit pack, subscription, schools" },
   { value: "30", label: "Security tests on Tally that try to read another user's data" },
   { value: "2:1", label: "Current grade in Computer Science and Business" },
@@ -212,32 +212,31 @@ export const projects: Project[] = [
   {
     id: "clients",
     index: "03",
-    name: "ML Webdesign",
-    kind: "Own freelance business · client work",
+    name: "The Driving School Dublin",
+    kind: "Client work through ML Webdesign",
     period: "2025 – now",
     oneLiner:
-      "My freelance web design business, building fast, clean websites for small businesses in Ireland. Two client sites are live: an RSA-approved driving instructor and a Dublin grinds school.",
+      "A website and lesson-request system for an RSA-approved driving instructor in Dublin, built through ML Webdesign, my freelance web design business. Live since August 2025, and I still maintain it.",
     links: [
       { label: "The Driving School Dublin", href: "https://thedrivingschooldublin.com" },
-      { label: "Grinds school site", href: "https://grinds-website.vercel.app/" },
       { label: "Code", href: "https://github.com/matthewpoleary-dot/TheDrivingSchoolDublin" },
     ],
     business: [
       {
-        k: "The clients",
-        v: "An RSA-approved driving instructor serving learners across Dublin, and a grinds school covering primary, Junior Cert and Leaving Cert.",
+        k: "The client",
+        v: "An RSA-approved driving instructor serving learners across Dublin, teaching in manual and automatic cars.",
       },
       {
         k: "What they needed",
-        v: "For the instructor: learners finding him, seeing prices and requesting lessons. For the grinds school: a clear way for parents to book a free consultation.",
+        v: "Learners needed to find him, see prices, and request lessons at times he could actually take them.",
       },
       {
         k: "Scoping in phases",
-        v: "The driving school site launched contact-first in August 2025 and gained structure after that. Shipping something useful early beat waiting for the full system.",
+        v: "The site launched contact-first in August 2025, with the booking pages kept out of the first release.",
       },
       {
         k: "After launch",
-        v: "I've kept maintaining it. In 2026 that meant restructuring the pricing layout and moving weekend pricing into the FAQ. Client work doesn't end at handover.",
+        v: "I've kept maintaining it. In 2026 that meant restructuring the pricing layout and moving weekend pricing into the FAQ.",
       },
     ],
     technical: [
@@ -253,10 +252,6 @@ export const projects: Project[] = [
         k: "Getting time right",
         v: "Fixed timezone drift so emails and the admin view format consistently in Europe/Dublin.",
       },
-      {
-        k: "Grinds site",
-        v: "Consultation requests are stored in Supabase and trigger an email notification through Nodemailer. Server-side environment handling was fixed so keys aren't baked in at build time.",
-      },
     ],
     stack: ["Next.js", "TypeScript", "Supabase", "Resend", "Zod", "Vercel"],
     images: [
@@ -268,7 +263,7 @@ export const projects: Project[] = [
       },
     ],
     learned:
-      "A client cares whether the phone rings, not about the stack. Translating a small business's problem into a site, then staying around to change it, taught me more than any brief.",
+      "Working for a client meant building what the business needed first, getting it live, and then changing it as the business changed.",
   },
 ];
 
@@ -368,8 +363,8 @@ export const experience = [
     org: "ML Webdesign",
     role: "Founder, freelance web design",
     track: "Clients · Building",
-    did: "Running my own small web business: finding the brief, building the site, and maintaining it for clients including The Driving School Dublin and a Dublin grinds school.",
-    why: "The clients are small businesses, and I keep maintaining their sites after launch.",
+    did: "My own freelance web design business. I built the website and lesson-request system for The Driving School Dublin, and I still maintain it.",
+    why: "",
   },
   {
     when: "Alongside college",

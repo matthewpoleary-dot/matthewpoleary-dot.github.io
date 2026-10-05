@@ -9,7 +9,7 @@ export default function Hero({ cv, photo }: { cv: Cv; photo: string | null }) {
   return (
     <section id="top" aria-labelledby="hero-title" className="px-4 pb-20 pt-28 sm:px-8 sm:pt-36">
       <div className="mx-auto max-w-6xl">
-        <div className="grid items-center gap-12 md:grid-cols-12">
+        <div className="grid items-center gap-8 md:grid-cols-12 md:gap-12">
           <div className="rise md:col-span-7">
             <p className="font-mono text-[0.95rem] text-accent">{person.name}</p>
             <h1 id="hero-title" className="display mt-5 text-[clamp(2.25rem,5vw,3.6rem)] text-balance">
@@ -20,14 +20,14 @@ export default function Hero({ cv, photo }: { cv: Cv; photo: string | null }) {
             <div className="mt-9 flex flex-wrap items-center gap-2 sm:gap-3">
               <a
                 href="#work"
-                className="inline-flex h-12 items-center rounded-full bg-accent px-5 sm:px-6 font-medium text-accent-ink transition-opacity hover:opacity-90"
+                className="inline-flex h-12 items-center rounded-full bg-accent px-4 sm:px-6 font-medium text-accent-ink transition-opacity hover:opacity-90"
               >
                 View work
               </a>
               <a
                 href={cv.href}
                 {...cvProps}
-                className="inline-flex h-12 items-center rounded-full border border-rule px-5 sm:px-6 font-medium transition-colors hover:border-ink-3"
+                className="inline-flex h-12 items-center rounded-full border border-rule px-4 sm:px-6 font-medium transition-colors hover:border-ink-3"
               >
                 {cv.label}
               </a>
@@ -36,7 +36,7 @@ export default function Hero({ cv, photo }: { cv: Cv; photo: string | null }) {
                 target="_blank"
                 rel="noopener"
                 aria-label="LinkedIn"
-                className="inline-flex size-12 items-center justify-center rounded-full border border-rule text-ink-2 transition-colors hover:border-ink-3 hover:text-ink"
+                className="inline-flex size-11 items-center justify-center rounded-full sm:size-12 border border-rule text-ink-2 transition-colors hover:border-ink-3 hover:text-ink"
               >
                 <LinkedIn />
               </a>
@@ -45,7 +45,7 @@ export default function Hero({ cv, photo }: { cv: Cv; photo: string | null }) {
                 target="_blank"
                 rel="noopener"
                 aria-label="GitHub"
-                className="inline-flex size-12 items-center justify-center rounded-full border border-rule text-ink-2 transition-colors hover:border-ink-3 hover:text-ink"
+                className="inline-flex size-11 items-center justify-center rounded-full sm:size-12 border border-rule text-ink-2 transition-colors hover:border-ink-3 hover:text-ink"
               >
                 <GitHub />
               </a>
@@ -55,15 +55,19 @@ export default function Hero({ cv, photo }: { cv: Cv; photo: string | null }) {
             </p>
           </div>
 
-          <div className="rise md:col-span-5" style={{ "--d": "120ms" } as React.CSSProperties}>
+          <div
+            className="rise order-first md:order-none md:col-span-5"
+            style={{ "--d": "120ms" } as React.CSSProperties}
+          >
             {photo ? (
               <Image
                 src={photo}
-                alt={person.name}
-                width={900}
-                height={900}
+                alt={`${person.name}`}
+                width={380}
+                height={380}
                 priority
-                className="aspect-square w-full rounded-2xl object-cover shadow-[0_30px_80px_-30px_rgb(0_0_0/0.6)]"
+                sizes="(min-width: 768px) 360px, 80vw"
+                className="aspect-square w-32 rounded-2xl sm:w-44 md:ml-auto md:w-full md:max-w-[22.5rem] object-cover shadow-[0_30px_80px_-30px_rgb(0_0_0/0.6)] md:mr-0"
               />
             ) : (
               <figure className="relative pb-10 pr-6 sm:pr-10">
