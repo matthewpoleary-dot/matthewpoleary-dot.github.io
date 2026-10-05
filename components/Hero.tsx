@@ -1,11 +1,9 @@
 import Image from "next/image";
 import { hero, person, stats } from "@/content/site";
 import type { Cv } from "@/lib/cv";
-import { GitHub, LinkedIn } from "./Icons";
+import LinkPills from "./LinkPills";
 
 export default function Hero({ cv, photo }: { cv: Cv; photo: string | null }) {
-  const cvProps = cv.available ? { target: "_blank", rel: "noopener" } : {};
-
   return (
     <section id="top" aria-labelledby="hero-title" className="px-4 pb-20 pt-28 sm:px-8 sm:pt-36">
       <div className="mx-auto max-w-6xl">
@@ -24,31 +22,7 @@ export default function Hero({ cv, photo }: { cv: Cv; photo: string | null }) {
               >
                 View work
               </a>
-              <a
-                href={cv.href}
-                {...cvProps}
-                className="inline-flex h-12 items-center rounded-full border border-rule px-4 sm:px-6 font-medium transition-colors hover:border-ink-3"
-              >
-                {cv.label}
-              </a>
-              <a
-                href={person.linkedin}
-                target="_blank"
-                rel="noopener"
-                aria-label="LinkedIn"
-                className="inline-flex size-11 items-center justify-center rounded-full sm:size-12 border border-rule text-ink-2 transition-colors hover:border-ink-3 hover:text-ink"
-              >
-                <LinkedIn />
-              </a>
-              <a
-                href={person.github}
-                target="_blank"
-                rel="noopener"
-                aria-label="GitHub"
-                className="inline-flex size-11 items-center justify-center rounded-full sm:size-12 border border-rule text-ink-2 transition-colors hover:border-ink-3 hover:text-ink"
-              >
-                <GitHub />
-              </a>
+              <LinkPills cv={cv} />
             </div>
             <p className="mt-6 text-sm text-ink-3">{hero.status}</p>
           </div>

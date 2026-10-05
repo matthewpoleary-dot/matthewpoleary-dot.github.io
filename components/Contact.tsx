@@ -1,14 +1,9 @@
 import { person } from "@/content/site";
 import type { Cv } from "@/lib/cv";
 import { ArrowUpRight } from "./Icons";
+import LinkPills from "./LinkPills";
 
 export default function Contact({ cv }: { cv: Cv }) {
-  const links = [
-    { k: "LinkedIn", href: person.linkedin, external: true },
-    { k: "GitHub", href: person.github, external: true },
-    { k: cv.available ? "CV (PDF)" : "Request my CV", href: cv.href, external: cv.available },
-  ];
-
   return (
     <section id="contact" aria-labelledby="contact-title" className="border-t border-rule px-4 py-24 sm:px-8 sm:py-32">
       <div className="mx-auto max-w-6xl">
@@ -29,19 +24,7 @@ export default function Contact({ cv }: { cv: Cv }) {
           <ArrowUpRight className="size-6 shrink-0 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
         </a>
 
-        <ul className="mt-12 flex flex-wrap gap-3">
-          {links.map((l) => (
-            <li key={l.k}>
-              <a
-                href={l.href}
-                {...(l.external ? { target: "_blank", rel: "noopener" } : {})}
-                className="inline-flex h-12 items-center gap-2 rounded-full border border-rule px-6 transition-colors hover:border-ink-3"
-              >
-                {l.k} <ArrowUpRight />
-              </a>
-            </li>
-          ))}
-        </ul>
+        <LinkPills cv={cv} className="mt-12" />
       </div>
     </section>
   );
