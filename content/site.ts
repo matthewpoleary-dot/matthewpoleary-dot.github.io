@@ -74,10 +74,12 @@ export const projects: Project[] = [
     name: "StudyWith",
     kind: "Creator · 2025 – 2026",
     oneLiner: "An AI tutoring platform for Leaving Cert students. The tutor asks questions instead of giving answers.",
-    detail:
-      "I added product analytics with PostHog and iterated on the tutor across several versions. An established Irish grinds company then approached me about acquiring it, and I weighed white-label licensing against a sale.",
+    detail: "I added product analytics with PostHog and iterated on the tutor across several versions.",
     stack: ["Next.js", "TypeScript", "Supabase", "Stripe", "PostHog"],
-    links: [{ label: "Code", href: "https://github.com/matthewpoleary-dot/Studywith" }],
+    links: [
+      { label: "Website", href: "https://studywith.live" },
+      { label: "Code", href: "https://github.com/matthewpoleary-dot/Studywith" },
+    ],
     images: [
       {
         src: "/work/studywith.jpg",
