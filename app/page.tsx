@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
 import RevealObserver from "@/components/Reveal";
+import Skills from "@/components/Skills";
 import { person } from "@/content/site";
 import { getCv, getPhoto } from "@/lib/cv";
 
@@ -43,6 +44,10 @@ export default function Home() {
       <Header cv={cv} />
       <main id="main">
         <Hero cv={cv} photo={getPhoto()} />
+
+        <Section id="skills" title="Skills">
+          <Skills />
+        </Section>
 
         <Section id="work" title="Work">
           <Projects />

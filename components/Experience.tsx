@@ -44,7 +44,7 @@ export default function Experience() {
         />
 
         <div data-reveal>
-          <h3 className="label">Toolbox</h3>
+          <h3 className="label">Also</h3>
           <dl className="mt-3 border-t border-rule">
             {toolbox.map((t) => (
               <div key={t.k} className="grid grid-cols-[6.5rem_1fr] gap-4 border-b border-rule py-4">

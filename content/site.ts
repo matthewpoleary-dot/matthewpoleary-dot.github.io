@@ -156,10 +156,26 @@ export const education = [
   },
 ];
 
+/** Shown high on the page, for technical recruiters. */
+export const skills = [
+  { group: "Languages", items: ["Java", "TypeScript", "SQL", "ARM Assembly"] },
+  {
+    group: "Computer science",
+    items: [
+      "Data structures and algorithms",
+      "Relational database design",
+      "Automated testing",
+      "Access control and data security",
+    ],
+  },
+  {
+    group: "Web and cloud",
+    items: ["React", "Next.js", "Node.js", "Tailwind CSS", "Postgres", "Supabase", "AWS", "Vercel"],
+  },
+  { group: "APIs and tools", items: ["Git", "Stripe", "Gemini and Groq APIs", "Resend", "Playwright", "Excel"] },
+];
+
 export const toolbox = [
-  { k: "Code", v: "Java, TypeScript, SQL, ARM Assembly" },
-  { k: "Web", v: "React, Next.js, Tailwind CSS, Postgres, Supabase" },
-  { k: "Services", v: "Stripe, Vercel, AWS, Resend, Gemini and Groq APIs" },
   { k: "Business", v: "Excel modelling, PowerPoint, data cleansing, equity research" },
   { k: "Languages", v: "English, French, Spanish, Irish" },
   { k: "Outside work", v: "Running, golf, padel, rugby, Classics, travelling" },
