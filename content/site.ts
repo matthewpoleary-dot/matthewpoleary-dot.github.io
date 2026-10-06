@@ -16,14 +16,14 @@ export const person = {
 
 export const hero = {
   headline: "I build software for a Dublin driving school, and for my own part\u2011time job.",
-  sub: "Computer Science (major) and Business (minor) at Trinity College Dublin. Two summers as a data analysis intern at Unio Wealth Management, a year as a junior analyst in the Trinity Student Managed Fund, and founder of StudyWith.",
-  status: "Looking for a summer 2027 internship.",
+  sub: "Computer Science (major) and Business (minor) at Trinity College Dublin. Two summers as a data analysis intern at Unio Wealth Management, a year as a junior analyst in the Trinity Student Managed Fund, and creator of StudyWith.",
+  status: "Looking for a summer 2027 internship. Available May to September 2027.",
 };
 
 export const stats = [
   { value: "2", label: "Summers as a data analysis intern at Unio Wealth Management" },
-  { value: "3", label: "Products built end to end: Tally, StudyWith and a client's booking site" },
-  { value: "589", label: "Leaving Certificate points" },
+  { value: "1,200+", label: "Organic Google search clicks on the driving school site I built" },
+  { value: "90%", label: "Programming Project, my top result at Trinity" },
   { value: "2:1", label: "Current grade at Trinity" },
 ];
 
@@ -42,10 +42,11 @@ export const projects: Project[] = [
   {
     id: "tally",
     name: "Tally",
-    kind: "Personal project · 2026",
+    kind: "Creator · Sept 2026 – Present",
     oneLiner:
       "A pay tracker for part-time workers in Ireland, built for my own job. Log the week's shifts and it tells you what they're worth and whether you'll hit your savings goal.",
-    detail: "Every figure its AI assistant quotes is calculated in code, not by the model.",
+    detail:
+      "I use it daily. Data access is locked down per user and tested, and every figure its AI assistant quotes is calculated in code, not by the model.",
     stack: ["Next.js", "TypeScript", "Supabase", "Postgres", "Gemini API"],
     links: [
       { label: "Code", href: "https://github.com/matthewpoleary-dot/paytrackingapp" },
@@ -71,11 +72,11 @@ export const projects: Project[] = [
   {
     id: "studywith",
     name: "StudyWith",
-    kind: "Founder · 2025 – Present",
+    kind: "Creator · 2025 – 2026",
     oneLiner: "An AI tutoring platform for Leaving Cert students. The tutor asks questions instead of giving answers.",
     detail:
-      "Built end to end with Stripe billing, then pitched to Irish grinds companies, with positive engagement from an established one.",
-    stack: ["Next.js", "TypeScript", "Supabase", "Stripe", "Groq"],
+      "I added product analytics with PostHog and iterated on the tutor across several versions. An established Irish grinds company then approached me about acquiring it, and I weighed white-label licensing against a sale.",
+    stack: ["Next.js", "TypeScript", "Supabase", "Stripe", "PostHog"],
     links: [{ label: "Code", href: "https://github.com/matthewpoleary-dot/Studywith" }],
     images: [
       {
@@ -89,10 +90,12 @@ export const projects: Project[] = [
   {
     id: "clients",
     name: "The Driving School Dublin",
-    kind: "Client work through ML Webdesign · 2025 – Present",
-    oneLiner: "Booking website for an RSA-approved driving instructor in Dublin. Live since August 2025.",
-    detail: "Lesson slots are generated from his weekly hours, lesson length and days off.",
-    stack: ["Next.js", "TypeScript", "Supabase", "Resend"],
+    kind: "Developer · 2026 – Present",
+    oneLiner:
+      "A booking and payments system for a Dublin driving school, now pre-launch, plus the live marketing site, which has drawn over 1,200 organic Google search clicks.",
+    detail:
+      "Stripe webhooks are the single source of truth for booking state, and confirmed lessons sync to Google Calendar.",
+    stack: ["Next.js", "TypeScript", "Supabase", "Stripe"],
     links: [
       { label: "Website", href: "https://thedrivingschooldublin.com" },
       { label: "Code", href: "https://github.com/matthewpoleary-dot/TheDrivingSchoolDublin" },
@@ -110,22 +113,10 @@ export const projects: Project[] = [
 
 export const experience = [
   {
-    when: "2025 – Present",
-    role: "Founder",
-    org: "StudyWith",
-    did: "Built an AI tutoring platform for Leaving Cert students from prototype to a formal business listing. Led cold outreach to Irish grinds and tutoring providers.",
-  },
-  {
-    when: "Aug 2025 – Present",
-    role: "Founder",
-    org: "ML Webdesign",
-    did: "Freelance web design. Built and maintain the website and lesson-request system for The Driving School Dublin.",
-  },
-  {
     when: "Summers 2025, 2026",
     role: "Data Analysis Intern",
     org: "Unio Wealth Management",
-    did: "Cleansed and validated large datasets for the data team, used SQL to track down and fix data quality issues, and organised the team's meetings.",
+    did: "Cleansed and validated about 6,000 records, using SQL to find and fix data quality issues. Helped move pension payroll from paper to electronic processing, saving the finance department hours of manual work. Returned for a second summer.",
   },
   {
     when: "Sept 2025 – May 2026",
@@ -137,11 +128,11 @@ export const experience = [
 
 export const education = [
   {
-    when: "2024 – Present",
+    when: "2024 – 2028 (expected)",
     title: "BA Computer Science (Major) and Business (Minor)",
     place: "Trinity College Dublin",
     lines: [
-      "Year 3, currently achieving a 2:1.",
+      "Current grade 2:1. Top results: Programming Project 90%, Information Management 80%, Programming II 73%.",
       "Exchange semester at McGill University, Montreal, from January 2027.",
     ],
   },
@@ -150,7 +141,7 @@ export const education = [
     title: "Leaving Certificate, 589 points",
     place: "St Conleth's College",
     lines: [
-      "H1s in French, Spanish and Biology, H2 in Maths. John Kelly Award for Academic Excellence in Spanish.",
+      "H1s in French, Spanish and Biology, H2 in Maths. John Kelly Award for Spanish.",
       "Head Boy and Senior Cup Rugby Captain.",
     ],
   },
@@ -158,7 +149,10 @@ export const education = [
 
 /** Shown high on the page, for technical recruiters. */
 export const skills = [
-  { group: "Languages", items: ["Java", "TypeScript", "SQL", "ARM Assembly"] },
+  {
+    group: "Languages",
+    items: ["Java", "TypeScript", "SQL", "ARM Assembly", "Haskell", "Prolog", "C (basic)", "Python (learning)"],
+  },
   {
     group: "Computer science",
     items: [
@@ -172,11 +166,14 @@ export const skills = [
     group: "Web and cloud",
     items: ["React", "Next.js", "Node.js", "Tailwind CSS", "Postgres", "Supabase", "AWS", "Vercel"],
   },
-  { group: "APIs and tools", items: ["Git", "Stripe", "Gemini and Groq APIs", "Resend", "Playwright", "Excel"] },
+  {
+    group: "APIs and tools",
+    items: ["Git", "Stripe", "PostHog", "Anthropic API", "Gemini and Groq APIs", "Claude Code", "Codex", "Excel"],
+  },
 ];
 
 export const toolbox = [
   { k: "Business", v: "Excel modelling, PowerPoint, data cleansing, equity research" },
   { k: "Languages", v: "English, French, Spanish, Irish" },
-  { k: "Outside work", v: "Running, golf, padel, rugby, Classics, travelling" },
+  { k: "Outside work", v: "Running, golf, padel, rugby, chess, Classics, travelling" },
 ];
