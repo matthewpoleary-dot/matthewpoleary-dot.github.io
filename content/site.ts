@@ -131,10 +131,7 @@ export const education = [
     when: "2024 – 2028 (expected)",
     title: "BA Computer Science (Major) and Business (Minor)",
     place: "Trinity College Dublin",
-    lines: [
-      "Current grade 2:1. Top results: Programming Project 90%, Information Management 80%, Programming II 73%.",
-      "Exchange semester at McGill University, Montreal, from January 2027.",
-    ],
+    lines: ["Current grade 2:1. Top results: Programming Project 90%, Information Management 80%, Programming II 73%."],
   },
   {
     when: "2018 – 2024",
